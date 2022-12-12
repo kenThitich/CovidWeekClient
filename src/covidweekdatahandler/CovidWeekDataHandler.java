@@ -51,68 +51,50 @@ public class CovidWeekDataHandler {
             String json = response.toString();
             System.out.println(json);
             
-            JsonReader jsonr = Json.createReader(new StringReader(json));
-            JsonArray jsona = jsonr.readArray();
-            jsonr.close();
+            JsonReader jsonRead = Json.createReader(new StringReader(json));
+            JsonArray jsonArr = jsonRead.readArray();
+            jsonRead.close();
             
-            System.out.println(jsona);
+            System.out.println(jsonArr);
             
-            for(int i=0;i<jsona.size();i++){
-                JsonObject firstname = jsona.getJsonObject(i);
+            for(int i=0;i<jsonArr.size();i++){
+                JsonObject firstname = jsonArr.getJsonObject(i);
             
                 int year = firstname.getInt("year");
-                System.out.println(year);
             
                 int weeknum = firstname.getInt("weeknum");
-                System.out.println(weeknum);
             
                 int new_case = firstname.getInt("new_case");
-                System.out.println(new_case);
             
                 int total_case = firstname.getInt("total_case");
-                System.out.println(total_case);
             
                 int new_case_excludeabroad = firstname.getInt("new_case_excludeabroad");
-                System.out.println(new_case_excludeabroad);
             
                 int total_case_excludeabroad = firstname.getInt("total_case_excludeabroad");
-                System.out.println(total_case_excludeabroad);
             
                 int new_recovered = firstname.getInt("new_recovered");
-                System.out.println(new_recovered);
             
                 int total_recovered = firstname.getInt("total_recovered");
-                System.out.println(total_recovered);
             
                 int new_death = firstname.getInt("new_death");
-                System.out.println(new_death);
             
                 int total_death = firstname.getInt("total_death");
-                System.out.println(total_death);
             
                 int case_foreign  = firstname.getInt("case_foreign");
-                System.out.println(case_foreign);
             
                 int case_prison = firstname.getInt("case_prison");
-                System.out.println(case_prison);
             
                 int case_walkin = firstname.getInt("case_walkin");
-                System.out.println(case_walkin);
             
                 int case_new_prev = firstname.getInt("case_new_prev");
-                System.out.println(case_new_prev);
             
                 int case_new_diff = firstname.getInt("case_new_diff");
-                System.out.println(case_new_diff);
             
                 int death_new_prev = firstname.getInt("death_new_prev");
-                System.out.println(death_new_prev);
             
                 int death_new_diff = firstname.getInt("death_new_diff");
-                System.out.println(death_new_diff);
             
                 String update_date = firstname.getString("update_date");
-                System.out.println(update_date);
             
                 SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 Date date = DateFor.parse(update_date);
